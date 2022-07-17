@@ -27,9 +27,7 @@ func init() {
 
 func main() {
 	dg := Start()
-	// username := "username"
-	// tagline := "tagline"
-	// AddUser(username, tagline)
+
 	var users Users
 
 	getUsers(&users)
