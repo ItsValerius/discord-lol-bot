@@ -11,14 +11,16 @@ import (
 
 // Variables used for command line parameters
 var (
-	Token   string
-	API_KEY string
+	Token     string
+	API_KEY   string
+	ChannelID string
 )
 
 func init() {
 
 	flag.StringVar(&Token, "t", "", "Bot Token")
-	flag.StringVar(&Token, "k", "", "API KEY")
+	flag.StringVar(&API_KEY, "k", "", "API KEY")
+	flag.StringVar(&ChannelID, "c", "", "ChannelID")
 
 	flag.Parse()
 }
@@ -36,10 +38,10 @@ func main() {
 			<-time.After(time.Second * 5)
 			status := isInGame(users.Users[i])
 			if status {
-				dg.ChannelMessageSend("998242469592453211", users.Users[i].Name+" is in game!")
+				dg.ChannelMessageSend(ChannelID, users.Users[i].Name+" is in game!")
 				continue
 			}
-			dg.ChannelMessageSend("998242469592453211", users.Users[i].Name+" is not in game!")
+			dg.ChannelMessageSend(ChannelID, users.Users[i].Name+" is not in game!")
 
 		}
 
